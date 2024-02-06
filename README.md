@@ -21,7 +21,7 @@ Because of effectivity. When you create an instance of the `Wildcard`-class, you
 
 Because there is no reason to use regular expressions for the most common figures:
 
-`string*` means "starts with".
+`string*` means "starts with". 
 `*string` means "ends with".
 
 So even if I use regular expressions to cover complex patterns, it is too pointless to use regular expressions for one of these. If you like to provide more speedups for such simple patterns, feel free to push me some.

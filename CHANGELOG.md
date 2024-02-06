@@ -6,11 +6,13 @@ you can use the following url: https://github.com/ericsizemore/wildcard/compare/
 
 Simply replace the version numbers depending on which set of changes you wish to see.
 
-### 1.0.1 ()
+### 1.0.1 (2024-02-06)
 
   * Updated unit tests to use `assertTrue` and `assertFalse` instead of `assertEquals`.
   * Added the use of the PHPUnit `CoversClass` attribute.
   * Minor CS fixes.
+  * Removing PHP-CS-Fixer and Rector from dev dependencies, as they've done their job.
+  * Updating PHPUnit within composer for ^10.5 or ^11.0
 
 ### 1.0.0 (2024-02-02)
 
