@@ -33,7 +33,7 @@ declare(strict_types=1);
 
 /**
  * Esi\Wildcard is a fork of rkrx/php-wildcards (https://github.com/rkrx/php-wildcards) which is:
- *     Copyright (c) 2014-2023 Ronald Kirschler
+ *     Copyright (c) 2013-2023 Ronald Kirschler
  *
  * To see a list of changes in comparison to the original library {@see CHANGELOG.md}.
  */
@@ -42,46 +42,48 @@ namespace Esi\Wildcard\Tests;
 
 use Esi\Wildcard\Wildcard;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
+#[CoversClass(Wildcard::class)]
 class WildcardTest extends TestCase
 {
     public function testStars(): void
     {
-        self::assertEquals(true, Wildcard::create('*test.txt')->match('abc-test.txt'));
-        self::assertEquals(true, Wildcard::create('*test.txt')->match('test.txt'));
-        self::assertEquals(false, Wildcard::create('*test.txt')->match('est.txt'));
+        self::assertTrue(Wildcard::create('*test.txt')->match('abc-test.txt'));
+        self::assertTrue(Wildcard::create('*test.txt')->match('test.txt'));
+        self::assertFalse(Wildcard::create('*test.txt')->match('est.txt'));
 
-        self::assertEquals(true, Wildcard::create('test*.txt')->match('test-abc.txt'));
-        self::assertEquals(true, Wildcard::create('test*.txt')->match('test.txt'));
-        self::assertEquals(false, Wildcard::create('test*.txt')->match('tes.txt'));
+        self::assertTrue(Wildcard::create('test*.txt')->match('test-abc.txt'));
+        self::assertTrue(Wildcard::create('test*.txt')->match('test.txt'));
+        self::assertFalse(Wildcard::create('test*.txt')->match('tes.txt'));
 
-        self::assertEquals(true, Wildcard::create('test.*')->match('test.txt'));
-        self::assertEquals(true, Wildcard::create('test.*')->match('test.'));
-        self::assertEquals(false, Wildcard::create('test.*')->match('test'));
+        self::assertTrue(Wildcard::create('test.*')->match('test.txt'));
+        self::assertTrue(Wildcard::create('test.*')->match('test.'));
+        self::assertFalse(Wildcard::create('test.*')->match('test'));
     }
 
     public function testMarks(): void
     {
-        self::assertEquals(true, Wildcard::create('?test.txt')->match('1test.txt'));
-        self::assertEquals(false, Wildcard::create('?test.txt')->match('test.txt'));
+        self::assertTrue(Wildcard::create('?test.txt')->match('1test.txt'));
+        self::assertFalse(Wildcard::create('?test.txt')->match('test.txt'));
 
-        self::assertEquals(true, Wildcard::create('test?txt')->match('test.txt'));
-        self::assertEquals(true, Wildcard::create('test?txt')->match('test-txt'));
-        self::assertEquals(false, Wildcard::create('test?txt')->match('testtxt'));
+        self::assertTrue(Wildcard::create('test?txt')->match('test.txt'));
+        self::assertTrue(Wildcard::create('test?txt')->match('test-txt'));
+        self::assertFalse(Wildcard::create('test?txt')->match('testtxt'));
 
-        self::assertEquals(true, Wildcard::create('test.???')->match('test.txt'));
-        self::assertEquals(false, Wildcard::create('test.???')->match('test.text'));
+        self::assertTrue(Wildcard::create('test.???')->match('test.txt'));
+        self::assertFalse(Wildcard::create('test.???')->match('test.text'));
     }
 
     public function testMixed(): void
     {
-        self::assertEquals(true, Wildcard::create('test*?txt')->match('test1.txt'));
+        self::assertTrue(Wildcard::create('test*?txt')->match('test1.txt'));
     }
 
     public function testStartsAndEndsWith(): void
     {
-        self::assertEquals(true, Wildcard::create('ab*ab')->match('abababab'));
-        self::assertEquals(true, Wildcard::create('abab*abab')->match('abababab'));
-        self::assertEquals(false, Wildcard::create('ababab*ababab')->match('abababab'));
+        self::assertTrue(Wildcard::create('ab*ab')->match('abababab'));
+        self::assertTrue(Wildcard::create('abab*abab')->match('abababab'));
+        self::assertFalse(Wildcard::create('ababab*ababab')->match('abababab'));
     }
 }

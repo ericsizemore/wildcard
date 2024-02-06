@@ -3,7 +3,7 @@
 ## Supported Versions
 
 | Version | Supported          |
-| ------- | ------------------ |
+|---------|--------------------|
 | 1.0.x   | :white_check_mark: |
 
 ## Reporting a Vulnerability
@@ -19,8 +19,6 @@ I will evaluate the vulnerability and, if necessary, release a fix or mitigating
 Once either a) a fix has been published, or b) I have declined to address the vulnerability for whatever reason, you are free to publicly disclose it.
 
 ## Tidelift Subscribers
-
-Any packages marked as `Yes` under `Tidelift Only` in the [Supported Versions](https://github.com/ericsizemore/wildcard/security/policy#supported-versions) table above means that particular version will only recieve updates for Tidelift Subscribrs.
 
 If you're a [Tidelift](https://tidelift.com/) subscriber, please use this route instead:
 
