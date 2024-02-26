@@ -47,7 +47,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(Wildcard::class)]
 class WildcardTest extends TestCase
 {
-    public function testStars(): void
+    public function testStarsStatic(): void
     {
         self::assertTrue(Wildcard::create('*test.txt')->match('abc-test.txt'));
         self::assertTrue(Wildcard::create('*test.txt')->match('test.txt'));
@@ -62,7 +62,25 @@ class WildcardTest extends TestCase
         self::assertFalse(Wildcard::create('test.*')->match('test'));
     }
 
-    public function testMarks(): void
+    public function testStars(): void
+    {
+        $wildcard = new Wildcard('*test.txt');
+        self::assertTrue($wildcard->match('abc-test.txt'));
+        self::assertTrue($wildcard->match('test.txt'));
+        self::assertFalse($wildcard->match('est.txt'));
+
+        $wildcard = new Wildcard('test*.txt');
+        self::assertTrue($wildcard->match('test-abc.txt'));
+        self::assertTrue($wildcard->match('test.txt'));
+        self::assertFalse($wildcard->match('tes.txt'));
+
+        $wildcard = new Wildcard('test.*');
+        self::assertTrue($wildcard->match('test.txt'));
+        self::assertTrue($wildcard->match('test.'));
+        self::assertFalse($wildcard->match('test'));
+    }
+
+    public function testMarksStatic(): void
     {
         self::assertTrue(Wildcard::create('?test.txt')->match('1test.txt'));
         self::assertFalse(Wildcard::create('?test.txt')->match('test.txt'));
@@ -75,15 +93,45 @@ class WildcardTest extends TestCase
         self::assertFalse(Wildcard::create('test.???')->match('test.text'));
     }
 
-    public function testMixed(): void
+    public function testMarks(): void
+    {
+        $wildcard = new Wildcard('?test.txt');
+        self::assertTrue($wildcard->match('1test.txt'));
+        self::assertFalse($wildcard->match('test.txt'));
+
+        $wildcard = new Wildcard('test?txt');
+        self::assertTrue($wildcard->match('test.txt'));
+        self::assertTrue($wildcard->match('test-txt'));
+        self::assertFalse($wildcard->match('testtxt'));
+
+        $wildcard = new Wildcard('test.???');
+        self::assertTrue($wildcard->match('test.txt'));
+        self::assertFalse($wildcard->match('test.text'));
+    }
+
+    public function testMixedStatic(): void
     {
         self::assertTrue(Wildcard::create('test*?txt')->match('test1.txt'));
     }
 
-    public function testStartsAndEndsWith(): void
+    public function testMixed(): void
+    {
+        $wildcard = new Wildcard('test*?txt');
+
+        self::assertTrue($wildcard->match('test1.txt'));
+    }
+
+    public function testStartsAndEndsWithStatic(): void
     {
         self::assertTrue(Wildcard::create('ab*ab')->match('abababab'));
         self::assertTrue(Wildcard::create('abab*abab')->match('abababab'));
         self::assertFalse(Wildcard::create('ababab*ababab')->match('abababab'));
+    }
+
+    public function testStartsAndEndsWith(): void
+    {
+        self::assertTrue((new Wildcard('ab*ab'))->match('abababab'));
+        self::assertTrue((new Wildcard('abab*abab'))->match('abababab'));
+        self::assertFalse((new Wildcard('ababab*ababab'))->match('abababab'));
     }
 }
