@@ -48,7 +48,7 @@ jobs:
         run: composer run-script test
 
       - name: Coverage Check
-        uses: docker://ghcr.io/ericsizemore/phpunit-coverage-check-action:master
+        uses: ericsizemore/phpunit-coverage-check-action@1.0.0
         with:
           clover_file: 'build/logs/clover.xml'
           threshold: 100
