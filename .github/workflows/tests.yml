@@ -51,8 +51,8 @@ jobs:
         uses: docker://ghcr.io/ericsizemore/phpunit-coverage-check-action:master
         with:
           clover_file: 'build/logs/clover.xml'
-          threshold: '100'
-          show_files: 'true'
+          threshold: 100
+          show_files: true
 
       - uses: sudo-bot/action-scrutinizer@latest
         with:
