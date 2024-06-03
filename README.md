@@ -1,15 +1,8 @@
 Simple wildcard component
 =========================
 
-[![Build Status](https://scrutinizer-ci.com/g/ericsizemore/wildcard/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ericsizemore/wildcard/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/ericsizemore/wildcard/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ericsizemore/wildcard/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ericsizemore/wildcard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ericsizemore/wildcard/?branch=master)
-[![Tests](https://github.com/ericsizemore/wildcard/actions/workflows/tests.yml/badge.svg)](https://github.com/ericsizemore/wildcard/actions/workflows/tests.yml)
-[![PHPStan](https://github.com/ericsizemore/wildcard/actions/workflows/main.yml/badge.svg)](https://github.com/ericsizemore/wildcard/actions/workflows/main.yml)
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/esi/wildcard.svg)](https://packagist.org/packages/esi/wildcard)
-[![Downloads per Month](https://img.shields.io/packagist/dm/esi/wildcard.svg)](https://packagist.org/packages/esi/wildcard)
-[![License](https://img.shields.io/packagist/l/esi/wildcard.svg)](https://packagist.org/packages/esi/wildcard)
+> [!IMPORTANT]
+> This library is now archived, with no current plans to maintain it.
 
 This project aims to provide a dead simple component for php to support wildcards. Wildcards are * (zero or more characters) and ? (exactly one character). The component is not tied to filenames. You can use it also for namespaces, urls and other strings.
 
